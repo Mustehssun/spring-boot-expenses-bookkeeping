@@ -42,4 +42,11 @@ public class ExpenseController {
     public ResponseEntity<List<Expense>> getExpenses() {
         return ResponseEntity.ok(service.getExpenses());
     }
+
+    @PostMapping("/{id}/delete")
+    public ResponseEntity deleteExpense(@PathVariable Long id) {
+        service.deleteExpense(id);
+
+        return ResponseEntity.ok().build();
+    }
 }

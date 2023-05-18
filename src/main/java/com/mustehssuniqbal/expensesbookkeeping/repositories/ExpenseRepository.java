@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface ExpenseRepository extends CrudRepository<Expense, Long> {
     List<Expense> findAll();
+
+    void deleteById(Long id);
 }

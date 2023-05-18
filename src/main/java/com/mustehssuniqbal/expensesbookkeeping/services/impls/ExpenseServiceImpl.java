@@ -6,6 +6,7 @@ import com.mustehssuniqbal.expensesbookkeeping.services.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,5 +39,11 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public List<Expense> getExpenses() {
         return repository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void deleteExpense(Long id) {
+        repository.deleteById(id);
     }
 }

@@ -19,6 +19,6 @@ public class Expense {
     private String relationWithRecipient;
     private Double amount;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
 }
