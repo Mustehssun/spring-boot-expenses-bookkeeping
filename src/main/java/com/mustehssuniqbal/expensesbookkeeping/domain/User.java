@@ -1,5 +1,6 @@
 package com.mustehssuniqbal.expensesbookkeeping.domain;
 
+import com.mustehssuniqbal.expensesbookkeeping.constants.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,5 +16,10 @@ public class User {
     private Long id;
 
     private String username;
+    private String email;
     private String password;
+    private String firstName;
+    private String lastName;
+    private Integer age;
+    private Gender gender;
 }

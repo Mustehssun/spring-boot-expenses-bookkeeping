@@ -1,6 +1,7 @@
 package com.mustehssuniqbal.expensesbookkeeping.controllers;
 
 import com.mustehssuniqbal.expensesbookkeeping.domain.Expense;
+import com.mustehssuniqbal.expensesbookkeeping.domain.Receipt;
 import com.mustehssuniqbal.expensesbookkeeping.dtos.ExpenseDto;
 import com.mustehssuniqbal.expensesbookkeeping.mappers.GeneralMapper;
 import com.mustehssuniqbal.expensesbookkeeping.services.ExpenseService;
@@ -48,5 +49,22 @@ public class ExpenseController {
         service.deleteExpense(id);
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{id}/pay")
+    public ResponseEntity<Receipt> pay(@PathVariable Long id, @RequestBody Receipt receiptDto) {
+        Receipt receipt = service.pay(id, receiptDto.getAmountPaid(), receiptDto.getPaidOn());
+
+        return ResponseEntity.ok(receipt);
+    }
+
+    @GetMapping("/receipts/{id}")
+    public ResponseEntity<Receipt> getReceipt(@PathVariable Long id) {
+        return ResponseEntity.of(service.getReceipt(id));
+    }
+
+    @GetMapping("/receipts/")
+    public ResponseEntity<List<Receipt>> getReceipts() {
+        return ResponseEntity.ok(service.getReceipts());
     }
 }
