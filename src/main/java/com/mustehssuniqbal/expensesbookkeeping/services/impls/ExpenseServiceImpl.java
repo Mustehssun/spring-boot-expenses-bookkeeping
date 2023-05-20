@@ -76,4 +76,9 @@ public class ExpenseServiceImpl implements ExpenseService {
     public List<Receipt> getReceipts() {
         return receiptRepository.findAll();
     }
+
+    @Override
+    public List<Receipt> getReceiptsOfExpense(Long expenseId) {
+        return receiptRepository.findByExpenseId(expenseId);
+    }
 }

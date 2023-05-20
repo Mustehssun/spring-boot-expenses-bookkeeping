@@ -16,4 +16,5 @@ public interface ExpenseService {
     Receipt pay(Long id, Double amountPaid, Date paidOn);
     Optional<Receipt> getReceipt(Long id);
     List<Receipt> getReceipts();
+    List<Receipt> getReceiptsOfExpense(Long expenseId);
 }

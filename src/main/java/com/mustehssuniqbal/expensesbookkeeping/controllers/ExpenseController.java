@@ -67,4 +67,9 @@ public class ExpenseController {
     public ResponseEntity<List<Receipt>> getReceipts() {
         return ResponseEntity.ok(service.getReceipts());
     }
+
+    @GetMapping("/{id}/receipts/")
+    public ResponseEntity<List<Receipt>> getReceiptsOfExpense(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getReceiptsOfExpense(id));
+    }
 }
