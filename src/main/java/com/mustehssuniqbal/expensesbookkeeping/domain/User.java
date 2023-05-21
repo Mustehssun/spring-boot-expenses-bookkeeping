@@ -38,6 +38,9 @@ public class User implements UserDetails {
     private Boolean isAccountLocked = false;
     private Boolean isAccountEnabled = true;
 
+    @Transient
+    private String jwt;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

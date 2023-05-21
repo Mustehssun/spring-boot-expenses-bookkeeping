@@ -3,6 +3,7 @@ package com.mustehssuniqbal.expensesbookkeeping.services.impls;
 import com.mustehssuniqbal.expensesbookkeeping.domain.User;
 import com.mustehssuniqbal.expensesbookkeeping.repositories.UserRepository;
 import com.mustehssuniqbal.expensesbookkeeping.services.AuthService;
+import com.mustehssuniqbal.expensesbookkeeping.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +23,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtUtils jwtUtils;
 
     @Override
     public User signup(User user) {
@@ -43,7 +47,8 @@ public class AuthServiceImpl implements AuthService {
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
         );
         User authenticatedUser = (User) authentication.getPrincipal();
+        authenticatedUser.setJwt(jwtUtils.generateToken(authentication));
 
-        return user;
+        return authenticatedUser;
     }
 }
