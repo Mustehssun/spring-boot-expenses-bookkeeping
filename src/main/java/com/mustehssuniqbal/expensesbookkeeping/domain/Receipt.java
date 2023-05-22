@@ -20,4 +20,5 @@ public class Receipt {
 
     private Double amountPaid;
     private Date paidOn;
+    private String comments;
 }

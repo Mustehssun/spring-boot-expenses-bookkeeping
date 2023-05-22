@@ -12,4 +12,5 @@ public class ReceiptDto {
     private Expense expense;
     private Double amountPaid;
     private Date paidOn;
+    private String comments;
 }

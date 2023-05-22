@@ -3,6 +3,7 @@ package com.mustehssuniqbal.expensesbookkeeping.controllers;
 import com.mustehssuniqbal.expensesbookkeeping.domain.Expense;
 import com.mustehssuniqbal.expensesbookkeeping.domain.Receipt;
 import com.mustehssuniqbal.expensesbookkeeping.dtos.ExpenseDto;
+import com.mustehssuniqbal.expensesbookkeeping.dtos.ReceiptDto;
 import com.mustehssuniqbal.expensesbookkeeping.mappers.GeneralMapper;
 import com.mustehssuniqbal.expensesbookkeeping.services.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,8 @@ public class ExpenseController {
     }
 
     @PostMapping("/{id}/pay")
-    public ResponseEntity<Receipt> pay(@PathVariable Long id, @RequestBody Receipt receiptDto) {
-        Receipt receipt = service.pay(id, receiptDto.getAmountPaid(), receiptDto.getPaidOn());
+    public ResponseEntity<Receipt> pay(@PathVariable Long id, @RequestBody ReceiptDto receiptDto) {
+        Receipt receipt = service.pay(id, mapper.map(receiptDto, Receipt.class));
 
         return ResponseEntity.ok(receipt);
     }

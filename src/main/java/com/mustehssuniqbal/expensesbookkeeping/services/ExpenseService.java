@@ -13,7 +13,7 @@ public interface ExpenseService {
     Optional<Expense> getExpense(Long id);
     List<Expense> getExpenses();
     void deleteExpense(Long id);
-    Receipt pay(Long id, Double amountPaid, Date paidOn);
+    Receipt pay(Long id, Receipt receipt);
     Optional<Receipt> getReceipt(Long id);
     List<Receipt> getReceipts();
     List<Receipt> getReceiptsOfExpense(Long expenseId);

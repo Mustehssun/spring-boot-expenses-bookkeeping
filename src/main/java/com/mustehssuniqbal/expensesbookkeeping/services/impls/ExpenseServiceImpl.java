@@ -54,15 +54,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public Receipt pay(Long id, Double amountPaid, Date paidOn) {
+    public Receipt pay(Long id, Receipt receipt) {
         Optional<Expense> expense = expenseRepository.findById(id);
         if(!expense.isPresent()) {
             throw new RuntimeException("Expense does not exist");
         }
-        Receipt receipt = new Receipt();
         receipt.setExpense(expense.get());
-        receipt.setAmountPaid(amountPaid);
-        receipt.setPaidOn(paidOn);
 
         return receiptRepository.save(receipt);
     }
