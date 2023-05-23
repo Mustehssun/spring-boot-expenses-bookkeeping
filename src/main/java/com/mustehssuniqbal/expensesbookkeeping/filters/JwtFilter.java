@@ -63,5 +63,6 @@ public class JwtFilter extends OncePerRequestFilter {
         String path = req.getServletPath();
 
         return path.startsWith("/auth/");
+//        return true;
     }
 }
