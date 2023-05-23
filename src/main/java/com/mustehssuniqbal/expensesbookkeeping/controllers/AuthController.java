@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -32,5 +35,10 @@ public class AuthController {
         User user = service.login(mapper.map(userdto, User.class));
 
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/validateToken")
+    public ResponseEntity<Boolean> validateToken() {
+        return ResponseEntity.ok().build(); //validation of token is already done in interceptors. So if flow reaches, it's already validated.
     }
 }

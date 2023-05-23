@@ -24,7 +24,7 @@ public class AuthConfig {
                             .antMatchers("/auth/login").permitAll()
                             .antMatchers("/expenses/**").permitAll()
                             .anyRequest().authenticated();
-//        httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
     }

@@ -39,8 +39,8 @@ public class JwtFilter extends OncePerRequestFilter {
                     userDetails.getAuthorities()
             );
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
-
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            req.setAttribute("username", username);
 
             filterChain.doFilter(req, res);
         }
@@ -62,7 +62,7 @@ public class JwtFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest req) {
         String path = req.getServletPath();
 
-        return path.startsWith("/auth/");
+        return path.startsWith("/auth/") && !path.startsWith("/auth/validateToken");
 //        return true;
     }
 }
