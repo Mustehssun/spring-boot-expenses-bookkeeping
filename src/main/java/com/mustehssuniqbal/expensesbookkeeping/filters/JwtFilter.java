@@ -63,6 +63,5 @@ public class JwtFilter extends OncePerRequestFilter {
         String path = req.getServletPath();
 
         return path.startsWith("/auth/") && !path.startsWith("/auth/validateToken");
-//        return true;
     }
 }
