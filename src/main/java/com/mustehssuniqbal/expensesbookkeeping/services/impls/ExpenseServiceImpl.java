@@ -44,7 +44,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<Expense> getExpenses() {
-        return expenseRepository.findAll();
+        return expenseRepository.findAllUndeleted();
     }
 
     @Override

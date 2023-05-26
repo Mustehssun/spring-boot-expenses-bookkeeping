@@ -21,4 +21,6 @@ public class Expense {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
+
+    private Boolean isDeleted;
 }
