@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +22,8 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Expense createExpense(Expense expense) {
+        expense.setIsDeleted(false);
+
         return expenseRepository.save(expense);
     }
 
