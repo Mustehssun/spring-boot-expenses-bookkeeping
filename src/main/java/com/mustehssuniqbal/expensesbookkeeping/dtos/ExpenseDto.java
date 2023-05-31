@@ -1,5 +1,6 @@
 package com.mustehssuniqbal.expensesbookkeeping.dtos;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.mustehssuniqbal.expensesbookkeeping.domain.User;
 import lombok.Getter;
 import lombok.Setter;
