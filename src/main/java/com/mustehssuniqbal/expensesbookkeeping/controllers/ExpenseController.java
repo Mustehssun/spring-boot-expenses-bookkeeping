@@ -2,6 +2,7 @@ package com.mustehssuniqbal.expensesbookkeeping.controllers;
 
 import com.mustehssuniqbal.expensesbookkeeping.domain.Expense;
 import com.mustehssuniqbal.expensesbookkeeping.domain.Receipt;
+import com.mustehssuniqbal.expensesbookkeeping.domain.reminder.ReminderFactoryParameterObject;
 import com.mustehssuniqbal.expensesbookkeeping.dtos.ExpenseDto;
 import com.mustehssuniqbal.expensesbookkeeping.dtos.ReceiptDto;
 import com.mustehssuniqbal.expensesbookkeeping.mappers.GeneralMapper;
@@ -23,7 +24,9 @@ public class ExpenseController {
 
     @PostMapping("/")
     public ResponseEntity<Expense> createExpense(@RequestBody ExpenseDto expenseDto) {
-        Expense expense = service.createExpense(mapper.map(expenseDto, Expense.class));
+        Expense mappedExpense = mapper.map(expenseDto, Expense.class);
+        ReminderFactoryParameterObject mappedReminder = mapper.map(expenseDto.getReminder(), ReminderFactoryParameterObject.class);
+        Expense expense = service.createExpense(mappedExpense, mappedReminder);
 
         return ResponseEntity.ok(expense);
     }

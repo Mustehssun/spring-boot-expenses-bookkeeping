@@ -2,6 +2,8 @@ package com.mustehssuniqbal.expensesbookkeeping.services.impls;
 
 import com.mustehssuniqbal.expensesbookkeeping.domain.Expense;
 import com.mustehssuniqbal.expensesbookkeeping.domain.Receipt;
+import com.mustehssuniqbal.expensesbookkeeping.domain.reminder.ReminderFactory;
+import com.mustehssuniqbal.expensesbookkeeping.domain.reminder.ReminderFactoryParameterObject;
 import com.mustehssuniqbal.expensesbookkeeping.repositories.ExpenseRepository;
 import com.mustehssuniqbal.expensesbookkeeping.repositories.ReceiptRepository;
 import com.mustehssuniqbal.expensesbookkeeping.services.ExpenseService;
@@ -21,8 +23,9 @@ public class ExpenseServiceImpl implements ExpenseService {
     private ReceiptRepository receiptRepository;
 
     @Override
-    public Expense createExpense(Expense expense) {
+    public Expense createExpense(Expense expense, ReminderFactoryParameterObject reminderParams) {
         expense.setIsDeleted(false);
+        expense.setReminder(ReminderFactory.create(reminderParams));
 
         return expenseRepository.save(expense);
     }
