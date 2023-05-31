@@ -9,7 +9,6 @@ public abstract class ReminderDecorator {
     protected Integer second;
     protected Integer minute;
     protected Integer hour;
-    protected Integer day;
 
     private ReminderDecorator decorator;
 

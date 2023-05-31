@@ -12,5 +12,6 @@ public class ExpenseDto {
     private String recipientName;
     private String relationWithRecipient;
     private Double amount;
+    private ReminderDto reminder;
     private User user;
 }
