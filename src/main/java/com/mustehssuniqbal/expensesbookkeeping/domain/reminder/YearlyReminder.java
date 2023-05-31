@@ -3,6 +3,9 @@ package com.mustehssuniqbal.expensesbookkeeping.domain.reminder;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+
+@Entity
 @Getter
 @Setter
 public class YearlyReminder extends ReminderDecorator {
