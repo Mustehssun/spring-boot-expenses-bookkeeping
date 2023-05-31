@@ -15,4 +15,10 @@ public class ReminderDto {
     private Boolean isSms;
     private Boolean isNotification;
     private Boolean isSnoozable;
+    private Integer day;
+    private Integer hour;
+    private Integer minute;
+    private Integer second;
+    private Integer monthlyDate;
+    private Integer month;
 }

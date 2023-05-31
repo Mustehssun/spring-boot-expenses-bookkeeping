@@ -10,7 +10,7 @@ import java.time.DayOfWeek;
 @Getter
 @Setter
 public class WeeklyReminder extends ReminderDecorator {
-    private DayOfWeek day;
+    private Integer day;    //TODO change to DayOfWeek
 
     @Override
     public void remindDecoration() {

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 public class YearlyReminder extends ReminderDecorator {
-    private Integer day;
+    private Integer monthlyDate;
     private Integer month;
 
     @Override
