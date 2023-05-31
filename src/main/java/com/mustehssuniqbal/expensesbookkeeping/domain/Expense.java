@@ -1,5 +1,6 @@
 package com.mustehssuniqbal.expensesbookkeeping.domain;
 
+import com.mustehssuniqbal.expensesbookkeeping.domain.reminder.ReminderDecorator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,9 @@ public class Expense {
     private String recipientName;
     private String relationWithRecipient;
     private Double amount;
+
+    @OneToOne
+    private ReminderDecorator reminder;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
