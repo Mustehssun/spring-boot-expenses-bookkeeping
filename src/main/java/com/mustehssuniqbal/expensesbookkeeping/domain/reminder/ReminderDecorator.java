@@ -1,6 +1,7 @@
 package com.mustehssuniqbal.expensesbookkeeping.domain.reminder;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
 @Setter
+@NoArgsConstructor
 public abstract class ReminderDecorator {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

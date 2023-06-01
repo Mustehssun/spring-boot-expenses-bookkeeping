@@ -20,7 +20,7 @@ public class Expense {
     private String relationWithRecipient;
     private Double amount;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private ReminderDecorator reminder;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

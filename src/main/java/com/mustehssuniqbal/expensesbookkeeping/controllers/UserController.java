@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService service;
 
-    @Autowired
+    @Resource(name = "generalMapper")
     private GeneralMapper mapper;
 
     @GetMapping("/{id}")

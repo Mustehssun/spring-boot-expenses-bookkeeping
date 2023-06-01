@@ -1,27 +1,29 @@
 package com.mustehssuniqbal.expensesbookkeeping.domain.reminder;
 
+import static com.mustehssuniqbal.expensesbookkeeping.utils.BooleanUtils.defaultIfNull;
+
 public class ReminderFactory {
     public static ReminderDecorator create(ReminderFactoryParameterObject params) {
         ReminderDecorator reminder = createTimelyReminder(params);
-        if(params.getIsEmail()) {
+        if(defaultIfNull(params.getIsEmail(), false)) {
             EmailReminder emailReminder = new EmailReminder();
             emailReminder.setDecorator(reminder);
 
             reminder = emailReminder;
         }
-        if(params.getIsNotification()) {
+        if(defaultIfNull(params.getIsNotification(), false)) {
             NotificationReminder notificationReminder = new NotificationReminder();
             notificationReminder.setDecorator(reminder);
 
             reminder = notificationReminder;
         }
-        if(params.getIsSms()) {
+        if(defaultIfNull(params.getIsSms(), false)) {
             SmsReminder smsReminder = new SmsReminder();
             smsReminder.setDecorator(reminder);
 
             reminder = smsReminder;
         }
-        if(params.getIsSnoozable()) {
+        if(defaultIfNull(params.getIsSnoozable(), false)) {
             SnoozableReminder snoozableReminder = new SnoozableReminder();
             snoozableReminder.setDecorator(reminder);
 
@@ -32,13 +34,13 @@ public class ReminderFactory {
 
     private static ReminderDecorator createTimelyReminder(ReminderFactoryParameterObject params) {
         ReminderDecorator reminder;
-        if(params.getIsDaily()) {
+        if(defaultIfNull(params.getIsDaily(), false)) {
             DailyReminder dailyReminder = new DailyReminder();
             setTime(params, dailyReminder);
 
             reminder = dailyReminder;
         }
-        if(params.getIsWeekly()) {
+        if(defaultIfNull(params.getIsWeekly(), false)) {
             WeeklyReminder weeklyReminder = new WeeklyReminder();
             setTime(params, weeklyReminder);
 
@@ -46,7 +48,7 @@ public class ReminderFactory {
 
             reminder = weeklyReminder;
         }
-        if(params.getIsMonthly()) {
+        if(defaultIfNull(params.getIsMonthly(), false)) {
             MonthlyReminder monthlyReminder = new MonthlyReminder();
             setTime(params, monthlyReminder);
 
@@ -54,7 +56,7 @@ public class ReminderFactory {
 
             reminder = monthlyReminder;
         }
-        if(params.getIsYearly()) {
+        if(defaultIfNull(params.getIsYearly(), false)) {
             YearlyReminder yearlyReminder = new YearlyReminder();
             setTime(params, yearlyReminder);
 

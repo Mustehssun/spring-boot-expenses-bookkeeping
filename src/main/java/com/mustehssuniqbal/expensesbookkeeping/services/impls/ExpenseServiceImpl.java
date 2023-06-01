@@ -37,6 +37,7 @@ public class ExpenseServiceImpl implements ExpenseService {
             throw new RuntimeException("Expense does not exist.");
         }
         expense.setId(id);
+        expense.setIsDeleted(false);
 
         return expenseRepository.save(expense);
     }
