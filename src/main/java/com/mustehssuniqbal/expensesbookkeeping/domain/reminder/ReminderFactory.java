@@ -40,7 +40,7 @@ public class ReminderFactory {
 
             reminder = dailyReminder;
         }
-        if(defaultIfNull(params.getIsWeekly(), false)) {
+        else if(defaultIfNull(params.getIsWeekly(), false)) {
             WeeklyReminder weeklyReminder = new WeeklyReminder();
             setTime(params, weeklyReminder);
 
@@ -48,7 +48,7 @@ public class ReminderFactory {
 
             reminder = weeklyReminder;
         }
-        if(defaultIfNull(params.getIsMonthly(), false)) {
+        else if(defaultIfNull(params.getIsMonthly(), false)) {
             MonthlyReminder monthlyReminder = new MonthlyReminder();
             setTime(params, monthlyReminder);
 
@@ -56,7 +56,7 @@ public class ReminderFactory {
 
             reminder = monthlyReminder;
         }
-        if(defaultIfNull(params.getIsYearly(), false)) {
+        else if(defaultIfNull(params.getIsYearly(), false)) {
             YearlyReminder yearlyReminder = new YearlyReminder();
             setTime(params, yearlyReminder);
 
