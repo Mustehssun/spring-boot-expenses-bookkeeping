@@ -38,7 +38,9 @@ public class ExpenseController {
 
     @PostMapping("/{id}")
     public ResponseEntity<ExpenseDto> updateExpense(@PathVariable Long id, @RequestBody ExpenseDto expenseDto) {
-        Expense expense = service.updateExpense(id, mapper.map(expenseDto, Expense.class));
+        Expense mappedExpense = mapper.map(expenseDto);
+        ReminderFactoryParameterObject mappedReminder = mapper.map(expenseDto.getReminder(), ReminderFactoryParameterObject.class);
+        Expense expense = service.updateExpense(id, mappedExpense, mappedReminder);
 
         return ResponseEntity.ok(mapper.map(expense));
     }

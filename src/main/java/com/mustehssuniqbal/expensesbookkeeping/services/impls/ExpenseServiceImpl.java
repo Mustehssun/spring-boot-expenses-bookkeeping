@@ -31,12 +31,13 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public Expense updateExpense(Long id, Expense expense) {
+    public Expense updateExpense(Long id, Expense expense, ReminderFactoryParameterObject reminderParams) {
         Optional<Expense> existingExpense = expenseRepository.findById(id);
         if(!existingExpense.isPresent()) {
             throw new RuntimeException("Expense does not exist.");
         }
         expense.setId(id);
+        expense.setReminder(ReminderFactory.create(reminderParams));
         expense.setIsDeleted(false);
 
         return expenseRepository.save(expense);

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ExpenseService {
     Expense createExpense(Expense expense, ReminderFactoryParameterObject reminderParams);
-    Expense updateExpense(Long id, Expense expense);
+    Expense updateExpense(Long id, Expense expense, ReminderFactoryParameterObject reminderParams);
     Optional<Expense> getExpense(Long id);
     List<Expense> getExpenses();
     void deleteExpense(Long id);
